@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Administración de artículos</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <table *ngIf="hayRegistros(); else sinarticulos" class="table">
+          <tr>
+            <td>Codigo</td><td>Descripcion</td><td>Precio</td><td>Borrar</td><td>Seleccionar</td>
+          </tr>
+          <tr *ngFor="let art of articulos">
+            <td>{{art.codigo}}</td>
+            <td>{{art.descripcion}}</td>
+            <td>{{art.precio}}</td>
+            <td><button (click)="baja(art.codigo)" class="btn btn-danger">Borrar?</button></td>
+            <td><button (click)="seleccionar(art.codigo)" class="btn btn-primary">Seleccionar</button></td>        
+          </tr>
+        </table>
+      </div>
+    
+    </div>
+    
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+    <div class="row">
+          <div class="col-md-6">
+            <label>Descripcion</label>
+            <input type="text" [(ngModel)]="art.descripcion"  class="form-control"/>
+          </div>
+  
+          <div class="col-md-6">
+            <label>Precio</label>
+            <input type="number" [(ngModel)]="art.precio" class="form-control"/>
+          </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <button (click)="alta()" class="btn btn-success">Agregar</button>
+        <button (click)="modificacion()" class="btn btn-warning">Modificar</button>
+      </div>
+      
+    </div>
+  </div>
+     
+
